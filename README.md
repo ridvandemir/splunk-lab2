@@ -15,9 +15,9 @@ Skills Learned
 
 Tools Used
 
-Virtual Machines: To simulate a distributed Splunk environment.
-Splunk Enterprise: For log management, indexing, and querying.
-Splunk Universal Forwarder: For collecting logs from endpoint systems.
-Splunk Heavy Forwarder: For preprocessing and advanced routing of log data.
-Deployment Server: For centralized configuration and management of Splunk Forwarders.
-PuTTY: To connect and manage Linux and Windows servers.
+- Virtual Machines/Cloud: To simulate a distributed Splunk environment.
+- Splunk Enterprise: For log management, indexing, and querying.
+- Splunk Universal Forwarder: For collecting logs from endpoint systems.
+- Splunk Heavy Forwarder: For preprocessing and advanced routing of log data.
+- Deployment Server: For centralized configuration and management of Splunk Forwarders.
+- PuTTY/VS Code: To connect and manage Linux and Windows servers.
