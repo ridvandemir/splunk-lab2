@@ -6,12 +6,12 @@ The Distributed Splunk Environment Lab project aimed to build a comprehensive di
 
 Skills Learned
 
--Proficiency in deploying and managing a distributed Splunk architecture, including Search Head, Indexers, and Forwarders.
--Practical experience in setting up and configuring Intermediate and Heavy Forwarders to enhance log ingestion workflows.
--Hands-on knowledge of ingesting data from Linux and Windows systems using Universal Forwarders.
--Understanding and implementation of various Splunk data input mechanisms, such as file monitoring, scripted inputs, and real-time network inputs.
--Improved troubleshooting and optimization skills for distributed log ingestion pipelines.
--Practical knowledge of using a Deployment Server to centrally manage and configure Splunk Forwarders.
+- Proficiency in deploying and managing a distributed Splunk architecture, including Search Head, Indexers, and Forwarders.
+- Practical experience in setting up and configuring Intermediate and Heavy Forwarders to enhance log ingestion workflows.
+- Hands-on knowledge of ingesting data from Linux and Windows systems using Universal Forwarders.
+- Understanding and implementation of various Splunk data input mechanisms, such as file monitoring, scripted inputs, and real-time network inputs.
+- Improved troubleshooting and optimization skills for distributed log ingestion pipelines.
+- Practical knowledge of using a Deployment Server to centrally manage and configure Splunk Forwarders.
 
 Tools Used
 
