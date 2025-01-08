@@ -20,3 +20,7 @@ Tools Used
 - Splunk Heavy Forwarder: For preprocessing and advanced routing of log data.
 - Deployment Server: For centralized configuration and management of Splunk Forwarders.
 - VS Code: To connect and manage Linux and Windows servers.
+
+Network Diagram
+
+![splunk_lab2 drawio](https://github.com/user-attachments/assets/e30c7b1f-6626-401b-b8ee-0905c1b7c8dc)
