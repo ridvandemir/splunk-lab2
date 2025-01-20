@@ -35,6 +35,12 @@ Steps
 - Universal Forwarder was installed on Linux and Windows 10 machine to send logs to Splunk.
 - I created 'lab2' app under $SPLUNK_HOME/etc/apps/ to manage forwarding effectively.
 
+2-Splunk Configuration Setup
+- First, I deployed an app $SPLUNK_HOME/etc/apps/forward-to-indexer2 to send the internal logs of Seach Head, Deployment Server and Heavy Forwarder with outputs.conf.
+- Then, I configured Search Head for the distributed environment. I created distsearch.conf along with inputs.conf and web.conf under $SPLUNK_HOME/etc/system/local directory.
+- I then configured deployment clients, so that they can phone to Deployment Server. For this purpose, I deployed an app $SPLUNK_HOME/etc/apps/deployment-client.
+- After that, I configured the Universal Forwarders and Intermediate Forwarders by pushing the apps through Deployment Server.
+
 2-Indexers
 - First, I changed the IP address to static IP and added 'splunk' user.
   - sudo nano /etc/netplan/00-installer-config.yaml
