@@ -36,12 +36,12 @@ Steps
 - I created 'lab2' app under $SPLUNK_HOME/etc/apps/ to manage forwarding effectively.
 
 2-Splunk Configuration Setup
-- First, I deployed an app $SPLUNK_HOME/etc/apps/forward-to-indexer2 to send the internal logs of Seach Head, Deployment Server and Heavy Forwarder with outputs.conf.
-- Then, I configured Search Head for the distributed environment. I created distsearch.conf along with inputs.conf and web.conf under $SPLUNK_HOME/etc/system/local directory.
+- First, I deployed an app $SPLUNK_HOME/etc/apps/forward-to-indexer2 to send the internal logs of Seach Head, Deployment Server and Heavy Forwarder.
+- Then, I configured Search Head and Indexers for the distributed environment. I created distsearch.conf along with inputs.conf and web.conf under $SPLUNK_HOME/etc/system/local directory. And according to the log source I configured indexes.conf.
 - I then configured deployment clients, so that they can phone to Deployment Server. For this purpose, I deployed an app $SPLUNK_HOME/etc/apps/deployment-client.
 - After that, I configured the Universal Forwarders and Intermediate Forwarders by pushing the apps through Deployment Server.
 
-2-Indexers
+3-Indexers
 - First, I changed the IP address to static IP and added 'splunk' user.
   - sudo nano /etc/netplan/00-installer-config.yaml
     - IP1:192.168.2.19, IP2:192.168.2.20
@@ -53,9 +53,9 @@ Steps
   - $SPLUNK_HOME/bin/splunk start –accept-license
 - I activated 'boot start'.
   - sudo $SPLUNK_HOME/bin/splunk enable boot-start -user splunk
-- I configured Indexers to get the logs from Splunk components. For this purpose, I created inputs.conf and indexes.conf under $SPLUNK_HOME/etc/apps/<>/local directory.
+- I configured Indexers creating inputs.conf and indexes.conf to get the logs from Splunk components. Indexer1 gets the logs from Universal Forwarders. Indexer2 gets the logs from Syslog/HEC.
 
-3-Search Head
+4-Search Head
 - First, I changed the IP address to static IP and added 'splunk' user.
   - sudo nano /etc/netplan/00-installer-config.yaml
     - IP:192.168.2.21
@@ -67,9 +67,9 @@ Steps
   - $SPLUNK_HOME/bin/splunk start –accept-license
 - I activated 'boot start'.
   - sudo $SPLUNK_HOME/bin/splunk enable boot-start -user splunk
-- Now that I installed Search Head on a seperate machine, I must connect Indexers to Search Head. So that I can run the query in my Indexer. For this purpose, I created distsearch.conf along with inputs.conf, outputs.conf and web.conf under $SPLUNK_HOME/etc/apps/lab/local directory.
+- I configured Search Head creating inputs.conf and indexes.conf.
 
-4-Deployment Server
+5-Deployment Server
 - First, I changed the IP address to static IP and added 'splunk' user.
   - sudo nano /etc/netplan/00-installer-config.yaml
     - IP:192.168.2.9
@@ -81,8 +81,9 @@ Steps
   - $SPLUNK_HOME/bin/splunk start –accept-license
 - I activated 'boot start'.
   - sudo $SPLUNK_HOME/bin/splunk enable boot-start -user splunk
+- After connecting the clients to Deployment Server, I assigned the apps to the clients and created a server class for each app pushing.
 
-5-Heavy Forwarder
+6-Heavy Forwarder
 - First, I changed the IP address to static IP and added 'splunk' user.
   - sudo nano /etc/netplan/00-installer-config.yaml
     - IP:192.168.2.29
@@ -95,7 +96,7 @@ Steps
 - I activated 'boot start'.
   - sudo $SPLUNK_HOME/bin/splunk enable boot-start -user splunk
 
-6-Intermediate Forwarders
+7-Intermediate Forwarders
 - First, I changed the IP address to static IP and added 'splunkfwd' user.
   - sudo nano /etc/netplan/00-installer-config.yaml
     - IP1:192.168.2.30, IP2:192.168.2.31
@@ -107,8 +108,9 @@ Steps
   - $SPLUNK_HOME/bin/splunk start –accept-license
 - I activated 'boot start'.
   - sudo $SPLUNK_HOME/bin/splunk enable boot-start -user splunkfwd
+- I configured Universal Forwarder through Deployment Server.
 
-7-Splunk Forwarder on Linux machines
+8-Splunk Forwarder on Linux machines
 - First, I changed the IP address to static IP and added 'splunkfwd' user.
   - sudo nano /etc/netplan/00-installer-config.yaml
     - IP1:192.168.2.10, IP2:192.168.2.11
@@ -120,14 +122,13 @@ Steps
   - $SPLUNK_HOME/bin/splunk start –accept-license
 - I activated 'boot start'.
   - sudo $SPLUNK_HOME/bin/splunk enable boot-start -user splunkfwd
-- I planed to monitor scripted inputs from first Linux machine and security logs from second Linux machine. For this purpose, I created inputs.conf and outputs.conf under $SPLUNK_HOME/etc/apps/lab/local directory for each of them. I created this 'lab' under apps to manage forwarding effectively. We should also remember to place scripts under $SPLUNK_HOME/etc/apps/lab/bin directory. I used a random log generating script for this lab.
+- I monitored scripted inputs from first Linux machine and security logs from second Linux machine. I configured the Universal Forwarders through Deployment Server.
 
-8-Splunk Forwarder on Windows machine
+9-Splunk Forwarder on Windows machine
 - First, I changed the IP address to static IP.
   - Internet Settings>Change Adapter Options>Ethernet>Properties>IPv4 Properties>Manual
     - IP:192.168.2.12
 - I installed Splunk Forwarder
   - Deployment Server> Host/IP: 192.168.2.9, Port:8089
   - Receiving Server> Host/IP: 192.168.2.20, Port:9997
-- I then configured inputs.conf under $SPLUNK_HOME/etc/apps/lab/local directory
-
+- I configured the Universal Forwarder through Deployment Server.
