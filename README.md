@@ -47,7 +47,7 @@ Steps
   - $SPLUNK_HOME/bin/splunk start –accept-license
 - I activated 'boot start'.
   - sudo $SPLUNK_HOME/bin/splunk enable boot-start -user splunk
-- I configured Indexer to get the logs from universal forwarders. For this purpose, I created inputs.conf and indexes.conf under $SPLUNK_HOME/etc/apps/lab/local directory.
+- I configured Indexers to get the logs from Splunk components. For this purpose, I created inputs.conf and indexes.conf under $SPLUNK_HOME/etc/apps/<>/local directory.
 
 3-Search Head
 - First, I changed the IP address to static IP and added 'splunk' user.
@@ -61,7 +61,7 @@ Steps
   - $SPLUNK_HOME/bin/splunk start –accept-license
 - I activated 'boot start'.
   - sudo $SPLUNK_HOME/bin/splunk enable boot-start -user splunk
-- Now that I installed Search Head on a seperate machine, I must connect Indexers to Search Head. So that I can run the query in my Indexer. For this purpose, I created distsearch.conf along with inputs.conf and web.conf under $SPLUNK_HOME/etc/apps/lab/local directory.
+- Now that I installed Search Head on a seperate machine, I must connect Indexers to Search Head. So that I can run the query in my Indexer. For this purpose, I created distsearch.conf along with inputs.conf, outputs.conf and web.conf under $SPLUNK_HOME/etc/apps/lab/local directory.
 
 4-Deployment Server
 - First, I changed the IP address to static IP and added 'splunk' user.
@@ -121,6 +121,7 @@ Steps
   - Internet Settings>Change Adapter Options>Ethernet>Properties>IPv4 Properties>Manual
     - IP:192.168.2.12
 - I installed Splunk Forwarder
+  - Deployment Server> Host/IP: 192.168.2.9, Port:8089
   - Receiving Server> Host/IP: 192.168.2.20, Port:9997
 - I then configured inputs.conf under $SPLUNK_HOME/etc/apps/lab/local directory
 
