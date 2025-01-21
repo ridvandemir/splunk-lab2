@@ -2,15 +2,15 @@
 
 Objective
 
-The Distributed Splunk Environment Lab project aimed to build a comprehensive distributed setup of Splunk. The primary focus was on deploying and configuring various Splunk components, including a Search Head, Indexers, Forwarders (Intermediate, Universal and Heavy), and a Deployment Server, to create a scalable and efficient environment for log collection and analysis. This lab was designed to improve my 'splunk-lab' project by adding Search Peer and Intermediate Forwarders and managing log forwarding with Deployment Server.
+The Distributed Splunk Environment Lab project aimed to build a comprehensive distributed setup of Splunk. The primary focus was on deploying and configuring various Splunk components, including a Search Head, Indexers, Forwarders (Intermediate, Universal and Heavy), and a Deployment Server, to create a scalable and efficient environment for log collection. This lab was designed to improve my 'splunk-lab' project by adding Search Peer and Intermediate Forwarders and managing log forwarding with Deployment Server.
 
 Skills Learned
 
 - Proficiency in deploying and managing a distributed Splunk architecture, including Search Head, Indexers, and Forwarders.
 - Practical experience in setting up and configuring Heavy Forwarders to enhance log ingestion workflows.
 - Hands-on knowledge of ingesting data from Linux and Windows systems using Universal Forwarders.
-- Understanding and implementation of various Splunk data input mechanisms, such as file monitoring, scripted inputs, and real-time network inputs.
 - Practical knowledge of using a Deployment Server to centrally manage and configure Splunk Forwarders.
+- Understanding and implementation of various Splunk data input mechanisms, such as file monitoring, scripted inputs, and real-time network inputs.
 
 Tools Used
 
@@ -23,7 +23,7 @@ Tools Used
 
 Network Diagram
 
-![splunk_lab2 drawio](https://github.com/user-attachments/assets/e30c7b1f-6626-401b-b8ee-0905c1b7c8dc)
+![splunk_lab2 drawio](https://github.com/user-attachments/assets/5fe8aec8-1267-45ec-bc63-1147179db0c2)
 
 Steps
 
@@ -33,7 +33,6 @@ Steps
 - After installing virtual machines, I saw that they were reachable with the ‘ping’ command.
 - Splunk Enterprise was installed as Indexer, Seach Head, Deployment Server and Heavy Forwarder on the Linux machines.
 - Universal Forwarder was installed on Linux and Windows 10 machine to send logs to Splunk.
-- I created 'lab2' app under $SPLUNK_HOME/etc/apps/ to manage forwarding effectively.
 
 2-Splunk Configuration Setup
 - First, I deployed an app $SPLUNK_HOME/etc/apps/forward-to-indexer2 to send the internal logs of Seach Head, Deployment Server and Heavy Forwarder.
