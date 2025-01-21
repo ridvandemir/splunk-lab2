@@ -31,14 +31,17 @@ Steps
 - For the Linux machines, Ubuntu 22.04 and for the Windows machine Windows 10 were installed on VirtuelBox as virtual machines.
 - As a network ‘NAT Network' was selected and static IP address was determined on each virtual machine.
 - After installing virtual machines, I saw that they were reachable with the ‘ping’ command.
-- Splunk Enterprise was installed as Indexer, Seach Head, Deployment Server and Heavy Forwarder on the Linux machines.
-- Universal Forwarder was installed on Linux and Windows 10 machine to send logs to Splunk.
+- Splunk Enterprise was installed as Indexer, Seach Head, Deployment Server and Heavy Forwarder(HF) on the Linux machines.
+- Universal Forwarder(UF) was installed on Linux and Windows 10 machine to send logs to Intermediate Forwarder(IF) and then to Indexer1.
+- Also Heavy Forwarder(HF) sends network logs to Indexer2.
 
 2-Splunk Configuration Setup
 - First, I deployed an app $SPLUNK_HOME/etc/apps/forward-to-indexer2 to send the internal logs of Seach Head, Deployment Server and Heavy Forwarder.
-- Then, I configured Search Head and Indexers for the distributed environment. I created distsearch.conf along with inputs.conf and web.conf under $SPLUNK_HOME/etc/system/local directory. And according to the log source I configured indexes.conf.
-- I then configured deployment clients, so that they can phone to Deployment Server. For this purpose, I deployed an app $SPLUNK_HOME/etc/apps/deployment-client.
-- After that, I configured the Universal Forwarders and Intermediate Forwarders by pushing the apps through Deployment Server.
+- Then, I configured Search Head and Indexers for the distributed environment. I created 'distsearch.conf' along with inputs.conf and web.conf under $SPLUNK_HOME/etc/system/local directory.
+- I then configured deployment clients, so that they can phone to Deployment Server. For this purpose, I created 'deploxmenclients.conf' under $SPLUNK_HOME/etc/apps/deployment-client app.
+- After that, I configured the Universal Forwarders and Intermediate Forwarders to interact each other shown in diagram by pushing the apps through Deployment Server. At that point, I created 'serverclass.conf' under $SPLUNK_HOME/etc/system/local to send the app that I want.
+- According to the use cases I configured indexes.conf for each Indexer. For this lab, UF1 sends script output, UF2 sends linux secure logs, UF3 sends windows system logs and HF sends network logs.
+- When sending logs to Indexer, Splunk Add-ons for certain use cases can be usefull.
 
 3-Indexers
 - First, I changed the IP address to static IP and added 'splunk' user.
