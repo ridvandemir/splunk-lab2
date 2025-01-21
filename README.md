@@ -23,7 +23,7 @@ Tools Used
 
 Network Diagram
 
-![splunk_lab2 drawio](https://github.com/user-attachments/assets/5fe8aec8-1267-45ec-bc63-1147179db0c2)
+![splunk_lab2 drawio](https://github.com/user-attachments/assets/23d953be-b44c-458e-88f1-fb6517c8427f)
 
 Steps
 
@@ -33,7 +33,6 @@ Steps
 - After installing virtual machines, I saw that they were reachable with the ‘ping’ command.
 - Splunk Enterprise was installed as Indexer, Seach Head, Deployment Server and Heavy Forwarder(HF) on the Linux machines.
 - Universal Forwarder(UF) was installed on Linux and Windows 10 machine to send logs to Intermediate Forwarder(IF) and then to Indexer1.
-- Also Heavy Forwarder(HF) sends network logs to Indexer2.
 
 2-Splunk Configuration Setup
 - First, I deployed an app $SPLUNK_HOME/etc/apps/forward-to-indexer2 to send the internal logs of Seach Head, Deployment Server and Heavy Forwarder.
@@ -135,3 +134,5 @@ Steps
   - Deployment Server> Host/IP: 192.168.2.9, Port:8089
   - Receiving Server> Host/IP: 192.168.2.20, Port:9997
 - I monitored system logs from Windows machine and configured this Universal Forwarder through Deployment Server.
+
+NOT: As a best practice, when working with the directory/file under $SPLUNK_HOME, we should cahnge the ownership of directory/file from root to splunk/splunkfwd.
