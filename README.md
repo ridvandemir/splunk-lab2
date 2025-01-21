@@ -35,8 +35,8 @@ Steps
 - Universal Forwarder(UF) was installed on Linux and Windows 10 machine to send logs to Intermediate Forwarder(IF) and then to Indexer1.
 
 2-Splunk Configuration Setup
-- First, I deployed an app $SPLUNK_HOME/etc/apps/forward-to-indexer2 to send the internal logs of Seach Head, Deployment Server and Heavy Forwarder.
-- Then, I configured Search Head and Indexers for the distributed environment. I created 'distsearch.conf' along with inputs.conf and web.conf under $SPLUNK_HOME/etc/system/local directory.
+- First, I deployed an app $SPLUNK_HOME/etc/apps/forward-to-indexer2 to send the internal logs of Seach Head and Deployment Server.
+- Then, I configured Search Head for the distributed environment. I created 'distsearch.conf' along with inputs.conf and web.conf under $SPLUNK_HOME/etc/system/local directory.
 - I then configured deployment clients, so that they can phone to Deployment Server. For this purpose, I created 'deploxmenclients.conf' under $SPLUNK_HOME/etc/apps/deployment-client app.
 - After that, I configured the Universal Forwarders and Intermediate Forwarders to interact each other shown in the diagram by pushing the apps through Deployment Server. At this point, I created 'serverclass.conf' under $SPLUNK_HOME/etc/system/local to send the app that I wanted.
 - According to the use cases I configured indexes.conf for each Indexer. For this lab, UF1 sends script output, UF2 sends linux secure logs, UF3 sends windows system logs and HF sends network logs.
@@ -135,4 +135,6 @@ Steps
   - Receiving Server> Host/IP: 192.168.2.20, Port:9997
 - I monitored system logs from Windows machine and configured this Universal Forwarder through Deployment Server.
 
-NOT: As a best practice, when working with the directory/file under $SPLUNK_HOME, we should cahnge the ownership of directory/file from root to splunk/splunkfwd.
+NOT: 
+- As a best practice, when working with the directory/file under $SPLUNK_HOME, we should change the ownership of directory/file from root to splunk/splunkfwd.
+- For network logs, it is recommended to use syslog collector to send the logs to Heavy Forwarder.
