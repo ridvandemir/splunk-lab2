@@ -39,9 +39,9 @@ Steps
 - First, I deployed an app $SPLUNK_HOME/etc/apps/forward-to-indexer2 to send the internal logs of Seach Head, Deployment Server and Heavy Forwarder.
 - Then, I configured Search Head and Indexers for the distributed environment. I created 'distsearch.conf' along with inputs.conf and web.conf under $SPLUNK_HOME/etc/system/local directory.
 - I then configured deployment clients, so that they can phone to Deployment Server. For this purpose, I created 'deploxmenclients.conf' under $SPLUNK_HOME/etc/apps/deployment-client app.
-- After that, I configured the Universal Forwarders and Intermediate Forwarders to interact each other shown in diagram by pushing the apps through Deployment Server. At that point, I created 'serverclass.conf' under $SPLUNK_HOME/etc/system/local to send the app that I want.
+- After that, I configured the Universal Forwarders and Intermediate Forwarders to interact each other shown in the diagram by pushing the apps through Deployment Server. At this point, I created 'serverclass.conf' under $SPLUNK_HOME/etc/system/local to send the app that I wanted.
 - According to the use cases I configured indexes.conf for each Indexer. For this lab, UF1 sends script output, UF2 sends linux secure logs, UF3 sends windows system logs and HF sends network logs.
-- When sending logs to Indexer, Splunk Add-ons for certain use cases can be usefull.
+- When sending logs to Indexer, using Splunk Add-ons for certain use cases would be very beneficial.
 
 3-Indexers
 - First, I changed the IP address to static IP and added 'splunk' user.
@@ -55,7 +55,7 @@ Steps
   - $SPLUNK_HOME/bin/splunk start –accept-license
 - I activated 'boot start'.
   - sudo $SPLUNK_HOME/bin/splunk enable boot-start -user splunk
-- I configured Indexers creating inputs.conf and indexes.conf to get the logs from Splunk components. Indexer1 gets the logs from Universal Forwarders. Indexer2 gets the logs from Syslog/HEC.
+- I configured Indexers creating inputs.conf and indexes.conf to get the logs from Splunk components. Indexer1 gets the logs from Universal Forwarders. Indexer2 gets the logs from Syslog.
 
 4-Search Head
 - First, I changed the IP address to static IP and added 'splunk' user.
@@ -97,6 +97,7 @@ Steps
   - $SPLUNK_HOME/bin/splunk start –accept-license
 - I activated 'boot start'.
   - sudo $SPLUNK_HOME/bin/splunk enable boot-start -user splunk
+- I used Heavy Forwarder to send the network logs to Indexer2.
 
 7-Intermediate Forwarders
 - First, I changed the IP address to static IP and added 'splunkfwd' user.
@@ -110,7 +111,7 @@ Steps
   - $SPLUNK_HOME/bin/splunk start –accept-license
 - I activated 'boot start'.
   - sudo $SPLUNK_HOME/bin/splunk enable boot-start -user splunkfwd
-- I configured Universal Forwarder through Deployment Server.
+- I configured those Intermediate Forwarders through Deployment Server.
 
 8-Splunk Forwarder on Linux machines
 - First, I changed the IP address to static IP and added 'splunkfwd' user.
@@ -124,7 +125,7 @@ Steps
   - $SPLUNK_HOME/bin/splunk start –accept-license
 - I activated 'boot start'.
   - sudo $SPLUNK_HOME/bin/splunk enable boot-start -user splunkfwd
-- I monitored scripted inputs from first Linux machine and security logs from second Linux machine. I configured the Universal Forwarders through Deployment Server.
+- I monitored scripted inputs from first Linux machine and security logs from second Linux machine. I configured those Universal Forwarders through Deployment Server.
 
 9-Splunk Forwarder on Windows machine
 - First, I changed the IP address to static IP.
@@ -133,4 +134,4 @@ Steps
 - I installed Splunk Forwarder
   - Deployment Server> Host/IP: 192.168.2.9, Port:8089
   - Receiving Server> Host/IP: 192.168.2.20, Port:9997
-- I configured the Universal Forwarder through Deployment Server.
+- I monitored system logs from Windows machine and configured this Universal Forwarder through Deployment Server.
