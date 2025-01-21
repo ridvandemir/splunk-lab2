@@ -96,7 +96,7 @@ Steps
   - $SPLUNK_HOME/bin/splunk start –accept-license
 - I activated 'boot start'.
   - sudo $SPLUNK_HOME/bin/splunk enable boot-start -user splunk
-- I used Heavy Forwarder to send the network logs to Indexer2.
+- I used Heavy Forwarder to send the network logs to Indexer2. As a network logs, I sent OPNSense firewall logs through port 514.
 
 7-Intermediate Forwarders
 - First, I changed the IP address to static IP and added 'splunkfwd' user.
