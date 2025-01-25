@@ -40,7 +40,7 @@ Steps
 - I then configured deployment clients, so that they can phone to Deployment Server. For this purpose, I created 'deploymenclients.conf' under $SPLUNK_HOME/etc/apps/deployment-client app.
 - After that, I configured the Universal Forwarders and Intermediate Forwarders to interact with each other and send the logs to Indexer1 shown in the diagram by pushing the apps through Deployment Server. At this point, I created 'serverclass.conf' under $SPLUNK_HOME/etc/system/local to send the app that I wanted.
 - According to the use cases I configured indexes.conf for each Indexer. For this lab, UF1 sends script output, UF2 sends linux secure logs, UF3 sends windows system logs and HF sends network logs.
-- When sending logs to Indexer, using Splunk Add-ons for certain use cases would be very beneficial.
+- When sending logs to Indexer and parsing log in Indexer, using Splunk Add-ons for certain use cases would be very beneficial.
 
 3-Indexers
 - First, I changed the IP address to static IP and added 'splunk' user.
